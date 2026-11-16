@@ -1,0 +1,101 @@
+info:
+  name: Create Event
+  type: http
+  seq: 2
+  tags:
+    - events
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/events"
+  body:
+    type: json
+    data: |-
+      {
+        "event_date": "",
+        "event_time": "",
+        "matches": [
+          {
+            "court_number": 0,
+            "team1_id": 0,
+            "team2_id": 0
+          }
+        ]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: 201 Response
+    description: Successful Response
+    request:
+      url: "{{baseUrl}}/api/v1/events"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "event_date": "",
+            "event_time": "",
+            "matches": [
+              {
+                "court_number": 0,
+                "team1_id": 0,
+                "team2_id": 0
+              }
+            ]
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 422 Response
+    description: Validation Error
+    request:
+      url: "{{baseUrl}}/api/v1/events"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "event_date": "",
+            "event_time": "",
+            "matches": [
+              {
+                "court_number": 0,
+                "team1_id": 0,
+                "team2_id": 0
+              }
+            ]
+          }
+    response:
+      status: 422
+      statusText: Unprocessable Entity
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "detail": [
+              {
+                "loc": [],
+                "msg": "",
+                "type": ""
+              }
+            ]
+          }

@@ -1,0 +1,68 @@
+info:
+  name: Delete Player
+  type: http
+  seq: 5
+  tags:
+    - players
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/players/:player_id"
+  params:
+    - name: player_id
+      value: ""
+      type: path
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: 204 Response
+    description: Successful Response
+    request:
+      url: "{{baseUrl}}/api/v1/players/:player_id"
+      method: DELETE
+      params:
+        - name: player_id
+          value: ""
+          type: path
+    response:
+      status: 204
+      statusText: No Content
+      body:
+        type: text
+        data: ""
+  - name: 422 Response
+    description: Validation Error
+    request:
+      url: "{{baseUrl}}/api/v1/players/:player_id"
+      method: DELETE
+      params:
+        - name: player_id
+          value: ""
+          type: path
+    response:
+      status: 422
+      statusText: Unprocessable Entity
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "detail": [
+              {
+                "loc": [],
+                "msg": "",
+                "type": ""
+              }
+            ]
+          }

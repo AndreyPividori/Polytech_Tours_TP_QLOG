@@ -1,0 +1,28 @@
+opencollection: 1.0.0
+
+info:
+  name: corpo-padel-backend
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git
+    openapi:
+      - sourceUrl: http://localhost:8000/openapi.json
+        groupBy: tags
+        lastSyncDate: 2026-11-16T07:53:57.265Z
+        specHash: bf3786e350cfd72d97e033ce058279e9
+        autoCheck: true
+        autoCheckInterval: 5

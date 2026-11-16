@@ -1,0 +1,104 @@
+info:
+  name: Update Match
+  type: http
+  seq: 4
+  tags:
+    - matches
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/v1/matches/:match_id"
+  params:
+    - name: match_id
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "event_date": "",
+        "event_time": "",
+        "court_number": "",
+        "status": "",
+        "score_team1": "",
+        "score_team2": ""
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: 200 Response
+    description: Successful Response
+    request:
+      url: "{{baseUrl}}/api/v1/matches/:match_id"
+      method: PUT
+      params:
+        - name: match_id
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "event_date": "",
+            "event_time": "",
+            "court_number": "",
+            "status": "",
+            "score_team1": "",
+            "score_team2": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 422 Response
+    description: Validation Error
+    request:
+      url: "{{baseUrl}}/api/v1/matches/:match_id"
+      method: PUT
+      params:
+        - name: match_id
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "event_date": "",
+            "event_time": "",
+            "court_number": "",
+            "status": "",
+            "score_team1": "",
+            "score_team2": ""
+          }
+    response:
+      status: 422
+      statusText: Unprocessable Entity
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "detail": [
+              {
+                "loc": [],
+                "msg": "",
+                "type": ""
+              }
+            ]
+          }

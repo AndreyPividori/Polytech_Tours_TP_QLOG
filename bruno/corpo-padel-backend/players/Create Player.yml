@@ -1,0 +1,89 @@
+info:
+  name: Create Player
+  type: http
+  seq: 2
+  tags:
+    - players
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/players"
+  body:
+    type: json
+    data: |-
+      {
+        "first_name": "",
+        "last_name": "",
+        "company": "",
+        "license_number": "",
+        "email": ""
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: 201 Response
+    description: Successful Response
+    request:
+      url: "{{baseUrl}}/api/v1/players"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "first_name": "",
+            "last_name": "",
+            "company": "",
+            "license_number": "",
+            "email": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 422 Response
+    description: Validation Error
+    request:
+      url: "{{baseUrl}}/api/v1/players"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "first_name": "",
+            "last_name": "",
+            "company": "",
+            "license_number": "",
+            "email": ""
+          }
+    response:
+      status: 422
+      statusText: Unprocessable Entity
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "detail": [
+              {
+                "loc": [],
+                "msg": "",
+                "type": ""
+              }
+            ]
+          }

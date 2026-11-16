@@ -1,0 +1,80 @@
+info:
+  name: Create Account
+  type: http
+  seq: 1
+  tags:
+    - admin
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/admin/accounts/create"
+  body:
+    type: json
+    data: |-
+      {
+        "player_id": 0,
+        "role": ""
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: 201 Response
+    description: Successful Response
+    request:
+      url: "{{baseUrl}}/api/v1/admin/accounts/create"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "player_id": 0,
+            "role": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: ""
+  - name: 422 Response
+    description: Validation Error
+    request:
+      url: "{{baseUrl}}/api/v1/admin/accounts/create"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "player_id": 0,
+            "role": ""
+          }
+    response:
+      status: 422
+      statusText: Unprocessable Entity
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "detail": [
+              {
+                "loc": [],
+                "msg": "",
+                "type": ""
+              }
+            ]
+          }

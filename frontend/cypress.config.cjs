@@ -9,7 +9,7 @@ module.exports = defineConfig({
     specPattern: 'cypress/e2e/**/*.cy.js',
     supportFile: 'cypress/support/e2e.js',
     fixturesFolder: 'cypress/fixtures',
-    video: false,
+    video: true,
     defaultCommandTimeout: 8000,
     env: {
       apiUrl: 'http://localhost:8000/api/v1',

@@ -9,7 +9,7 @@ describe('Score', () => {
         cy.loginAdmin()
     })
 
-    it("Modification du score", () => {
+    it("Modification du score : SCORE_01", () => {
       cy.contains('Corpo Padel')
       cy.get('.gap-1 > [href="/matches"]').click()
       cy.window().then((win) => {cy.stub(win, 'prompt').onFirstCall().returns('6-2,6-3,7-6').onSecondCall().returns('2-6,3-6,6-7')})

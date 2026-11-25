@@ -22,7 +22,7 @@ class Settings(BaseSettings):
 
     # Anti-brute force
     max_login_attempts: int = 5
-    lockout_minutes: int = 30
+    lockout_minutes: int = 5
 
     @property
     def origins_list(self) -> list[str]:

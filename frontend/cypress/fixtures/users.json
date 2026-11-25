@@ -1,0 +1,18 @@
+{
+  "admin": {
+    "email": "admin@padel.com",
+    "password": "Admin@2025!"
+  },
+  "joueur": {
+    "email": "djamina.rahhou@gmail.com",
+    "password": "PasswordPadel12! "
+  },
+  "faux_Identifiant": {
+    "email": "marie.lefevre@techcorp.fr",
+    "password": "blablabla"
+  },
+  "vrai_Identifiant": {
+    "email": "marie.lefevre@techcorp.fr",
+    "password": "Joueur@2025!"
+  }
+}
